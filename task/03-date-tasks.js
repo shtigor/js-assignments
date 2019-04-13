@@ -22,7 +22,7 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 function parseDataFromRfc2822(value) {
-   throw new Error('Not implemented');
+   return new Date(value)
 }
 
 /**
@@ -37,7 +37,7 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 function parseDataFromIso8601(value) {
-   throw new Error('Not implemented');
+   return new Date(value)
 }
 
 
@@ -56,7 +56,12 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+   var year = date.getFullYear()
+
+   if (year % 4 != 0) return false
+   else if (year % 100 != 0) return true
+   else if (year % 400 != 0) return false
+   else return true
 }
 
 
@@ -76,7 +81,30 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+   var diff = 0, h = '00', m = '00', s = '00', ms = '000'
+   diff = (endDate - startDate) / 1000
+
+   if (diff / 3600 > 0) {
+       h = String(Math.trunc(diff / 3600))
+       h = h.length == 1 ? '0' + h : h
+       diff %= 3600
+   } 
+   if (diff / 60 > 0) {
+       m = String(Math.trunc(diff / 60))
+       m = m.length == 1 ? '0' + m : m
+       diff %= 60 
+   } 
+   if (diff > 0) {
+       s = String(Math.trunc(diff))
+       s = s.length == 1 ? '0' + s : s
+       diff -= s
+   }
+   if (diff > 0) {
+       ms = String(diff).slice(2,5)
+       ms = ms.length < 3 ? ms + '0' : ms
+   } 
+   
+   return `${h}:${m}:${s}.${ms}`
 }
 
 
@@ -94,7 +122,23 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+   /*function angleBetweenClockHands(date) {
+      var angle = 0, h, m, d, rad
+      d = new Date(date)
+      h = d.getHours()
+      m = d.getMinutes()
+      angle = Math.abs(.5 * (60 * h - 11 * m) - 90) 
+      angle = angle > 180 ? Math.abs(360 - angle) : angle
+  
+      rad = angle * Math.PI / 180
+      if (rad / Math.PI >= 3) rad = rad / (rad / Math.PI)
+      else rad = rad > Math.PI ? rad % Math.PI : rad
+  
+      if (rad == Math.PI) return Math.PI
+      else if (rad == Math.PI/2) return Math.PI/2
+      else return rad
+  }*/
+  throw new Error('Not implemented');
 }
 
 
