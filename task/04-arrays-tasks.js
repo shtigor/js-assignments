@@ -253,12 +253,10 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   // var a = []
-   // a.push(arr.reduce(function(currentValue, currentIndex) {
-   //    if (currentIndex % 2 == 0) return currentValue
-   // }))
-   // return a
-   throw new Error('Not implemented');
+   const a = arr.filter(x => {
+      if (arr.indexOf(x) % 2 !== 0) return true
+   })
+   return a
 }
 
 
@@ -380,7 +378,8 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   const max = arr.filter(i => i === item).length;
+   return max;
 }
 
 /**
@@ -395,7 +394,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.join(',')
 }
 
 
@@ -545,7 +544,7 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+   throw new Error('Not implemented');
 }
 
 

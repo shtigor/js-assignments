@@ -122,23 +122,7 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-   /*function angleBetweenClockHands(date) {
-      var angle = 0, h, m, d, rad
-      d = new Date(date)
-      h = d.getHours()
-      m = d.getMinutes()
-      angle = Math.abs(.5 * (60 * h - 11 * m) - 90) 
-      angle = angle > 180 ? Math.abs(360 - angle) : angle
-  
-      rad = angle * Math.PI / 180
-      if (rad / Math.PI >= 3) rad = rad / (rad / Math.PI)
-      else rad = rad > Math.PI ? rad % Math.PI : rad
-  
-      if (rad == Math.PI) return Math.PI
-      else if (rad == Math.PI/2) return Math.PI/2
-      else return rad
-  }*/
-  throw new Error('Not implemented');
+    throw new Error('Not implemented');
 }
 
 
