@@ -1,5 +1,6 @@
 'use strict';
 
+debugger;
 /*********************************************************************************************
  *                                                                                           *
  * Plese read the following tutorial before implementing tasks:                              *
@@ -275,7 +276,15 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+   let results = []
+   for (let i = 0; i < arr.length; i++) {
+      let times = i + 1
+      while (times != 0) {
+         results.push(arr[i]);
+         times--;
+      }
+   }
+   return results
 }
 
 
@@ -293,7 +302,9 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   arr.sort((a,b) => b - a);
+   arr.splice(3, arr.length - 3)
+   return arr
 }
  
  
@@ -311,8 +322,9 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
-}
+   let result = arr.filter(i => i > 0 && typeof(i) === 'number');
+   return result.length
+ }
  
 /** 
  * Sorts digit names
